@@ -153,7 +153,7 @@ def splitrgb(img, filename=None):
     plt.show()
 
 
-def imgcmp(img, img2, title=None):
+def imgcmp(img, img2, title=None, axis=False):
     """_summary_
         funcion que recibe dos array que representan las imagenes y las pone en una misma figura.
         valido si son a color o no para definir como mostrarlas.
@@ -172,7 +172,18 @@ def imgcmp(img, img2, title=None):
             ax1.set_title(title[0])
         else:
             ax1.set_title("Imagen 1")
-    plt.axis('off') # adios esquinas y mediciones para la posicion de los pixeles.
+    if not axis: # para poner las "direcciones" o la posición de cada pixel de la imagen. 
+        plt.axis('off')
+    else:
+        ax1.grid(c='w')
+        ax1.xaxis.tick_top()
+        ax1.xaxis.set_label_position('top') 
+        ax1.set_xlabel('Columns',fontsize=14)
+        ax1.set_ylabel('Rows',fontsize=14)
+        ax1.xaxis.label.set_color('w')
+        ax1.yaxis.label.set_color('w')
+        ax1.tick_params(axis='x', colors='w',labelsize=14)
+        ax1.tick_params(axis='y', colors='w',labelsize=14)
     ax2 = fig.add_subplot(122)
     if len(img2.shape) == 3:  #decido si la imagen es o no a color. Y decimos cómo dibujarla. 
         ax2.imshow(img2,extent=None) # punto el contenido del ax. extent, configurar el origen de la gráfica. 
@@ -183,7 +194,18 @@ def imgcmp(img, img2, title=None):
             ax2.set_title(title[1])
         else:
             ax2.set_title("Imagen 2")
-    plt.axis('off') # adios esquinas y mediciones para la posicion de los pixeles.
+    if not axis: # para poner las "direcciones" o la posición de cada pixel de la imagen. 
+        plt.axis('off')
+    else:
+        ax2.grid(c='w')
+        ax2.xaxis.tick_top()
+        ax2.xaxis.set_label_position('top') 
+        ax2.set_xlabel('Columns',fontsize=14)
+        ax2.set_ylabel('Rows',fontsize=14)
+        ax2.xaxis.label.set_color('w')
+        ax2.yaxis.label.set_color('w')
+        ax2.tick_params(axis='x', colors='w',labelsize=14)
+        ax2.tick_params(axis='y', colors='w',labelsize=14)
     plt.show()
 def imgcdf(img):
     """Compute the CDF on an image, va caulculando la suma de las veces que encuentra en el histograma 
