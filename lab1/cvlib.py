@@ -21,7 +21,6 @@ def imgview(img, title=None, filename=None, axis=False):
         im = ax.imshow(img,extent=None) # punto el contenido del ax. extent, configurar el origen de la gráfica. 
     else:
         im = ax.imshow(img,extent=None,cmap='gray',vmin=0,vmax=255) # escala de color, min y max de la escala.
-    
     # el im, sirve para reciclar el objeto. 
 
     if title != None:
