@@ -207,7 +207,7 @@ def main():
 
         colores = {}
         indexes = []
-        thickness = 1
+        thickness = 2
         #(255,0,0),602:(0,255,0)
         for cnt in range(len(contorno)):
             #print(f"{w}, {h}")
@@ -218,9 +218,8 @@ def main():
         # cv.rectangle(im.copy(),(x,y),(x+w,y+h),(0,255,0),1)
         for c in indexes:
             x,y,w,h = cv.boundingRect(contorno[c])
-            r = cv.rectangle(r,(x,y),(x+w,y+h),colores[c],2)
+            r = cv.rectangle(r,(x,y),(x+w,y+h),colores[c],thickness)
         view(r)
-
 
 if __name__ == "__main__":
     main()
