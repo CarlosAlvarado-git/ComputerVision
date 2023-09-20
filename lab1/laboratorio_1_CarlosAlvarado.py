@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import cvlib # mi librería
 import random
 import sys
+import sys, getopt
+
 
 labels_current = []
 
@@ -157,10 +159,19 @@ def labelview(labels):
     return img_color
 
 def main():
-    global labels_current
-    imagen_nombre = sys.argv[1]
-    imagen_guardar = sys.argv[2]
-    print(f"el imagen_nombre {imagen_nombre}, el imagen_guardar {imagen_guardar}")
+    inputfile = ''
+    outputfile = ''
+    opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
+    for opt, arg in opts:
+        if opt == '-h':
+            print ('test.py -i <inputfile> -o <outputfile>')
+            sys.exit()
+        elif opt in ("-i", "--ifile"):
+            inputfile = arg
+        elif opt in ("-o", "--ofile"):
+            outputfile = arg
+    print ('Input file is ', inputfile)
+    print ('Output file is ', outputfile)
     img = cv.imread(imagen_nombre, cv.IMREAD_GRAYSCALE)
     r,c = img.shape[0:2]
     #print('Rows {0}\nColumns {1}\nPixels {2:,}'.format(r,c,r*c))
