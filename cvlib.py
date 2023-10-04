@@ -67,6 +67,10 @@ def hist(img,title=None,fill=False,axis=False,filename=None):
         
     else:
         histr = cv.calcHist([img],[0],None,[256],[0,256])
+        for i in histr:
+            print(i, end="|")
+        print("\n")
+        print(histr[70])
         ax.plot(histr, c='w', alpha=0.9)
         x = np.arange(0.0, 256, 1)
         if fill:
