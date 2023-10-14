@@ -11,7 +11,7 @@ import cv2 as cv
 
 
 # get camera handle 
-device_id = 1
+device_id = 0
 cap = cv.VideoCapture(device_id)
 
 # verify that video handle is open
