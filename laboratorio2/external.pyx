@@ -32,4 +32,5 @@ cpdef unsigned char[:, :,:] sharpen_cython(unsigned char[:, :,:] img, double[:, 
                 if (t > 255):
                     t = 255
                 new_img[i,j,z] = t
-    return new_img.astype(np.uint8)
+    # return new_img.astype(np.uint8)
+    return np.array(new_img, np.uint8)
